@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+:root {
+  --color-page: #F8FAFC;
+  --color-card: #FFFFFF;
+  --color-card-hover: #F1F5F9;
+  --color-border: #E2E8F0;
+  --color-text-primary: #0F172A;
+  --color-text-muted: #64748B;
+  --color-nav-bg: #FFFFFF;
+}
+
+.dark {
+  --color-page: #0F172A;
+  --color-card: #1E293B;
+  --color-card-hover: #273449;
+  --color-border: #334155;
+  --color-text-primary: #F8FAFC;
+  --color-text-muted: #94A3B8;
+  --color-nav-bg: #0F172A;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-page);
+    color: var(--color-text-primary);
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+/* Shimmer Skeleton Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.15) 37%,
+    rgba(255, 255, 255, 0.05) 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+:not(.dark) .skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.04) 25%,
+    rgba(0, 0, 0, 0.09) 37%,
+    rgba(0, 0, 0, 0.04) 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+/* Button Micro-Interactions */
+.btn-primary {
+  @apply bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-lg shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30 active:scale-[0.98] transition-all duration-150 flex items-center justify-center space-x-2 disabled:opacity-60 disabled:pointer-events-none;
+}
+
+.btn-secondary {
+  @apply bg-transparent border border-slate-700 hover:bg-slate-800/80 text-slate-200 font-semibold text-xs px-3.5 py-2 rounded-lg transition-all duration-150 active:scale-[0.98] flex items-center justify-center space-x-1.5;
+}
+
+.btn-danger {
+  @apply bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-700 hover:to-rose-800 text-white font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-lg shadow-md shadow-rose-500/20 active:scale-[0.98] transition-all duration-150 flex items-center justify-center space-x-2 disabled:opacity-60;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
