@@ -24,6 +24,24 @@ app.use(cors({
 }));
 app.use(express.json());
 
+// Root welcome status handler for Render
+app.get('/', (req, res) => {
+  res.status(200).json({
+    service: 'Military Asset Management Command System API',
+    status: 'ONLINE',
+    database: 'Neon Cloud PostgreSQL (ACID Compliant)',
+    endpoints: {
+      health: '/api/health',
+      auth: '/api/auth/login',
+      dashboard: '/api/assets/dashboard',
+      purchases: '/api/purchases',
+      transfers: '/api/transfers',
+      assignments: '/api/assignments',
+      auditLogs: '/api/audit-logs'
+    }
+  });
+});
+
 // Routes Registration
 app.use('/api/auth', authRoutes);
 app.use('/api/assets', assetRoutes);
