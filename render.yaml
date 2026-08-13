@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: military-asset-management-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://neondb_owner:npg_em0ioaSpQId7@ep-old-leaf-axwdugg3-pooler.c-4.us-east-2.aws.neon.tech/neondb?sslmode=require
+      - key: JWT_SECRET
+        value: military_asset_jwt_secret_key_2026
+      - key: PORT
+        value: 10000
